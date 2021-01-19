@@ -9,7 +9,7 @@ class Task
   end
 
    def info
-    print "[No.#{@id}] #{@title}:#{@content}"
+     "[No.#{@id}] #{@title}:#{@content}"
   end
 
 end
@@ -19,11 +19,14 @@ class ToDo
     @tasks = []
   end
   def add(task)
-    @tasks <<  task.info
+    @tasks = task
+    puts "【追加】#{task.info}"
   end
 
   def info
-  # puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
+  puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
+  puts "#{@tasks}"
+  puts "*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*"
 
   end
  
