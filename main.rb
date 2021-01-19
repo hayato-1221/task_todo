@@ -19,17 +19,26 @@ class ToDo
     @tasks = []
   end
   def add(task)
-    @tasks = task
+    @tasks << task
     puts "【追加】#{task.info}"
   end
 
   def info
   puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
-  puts "#{@tasks}"
+   @tasks.each do |task|
+    puts task.info
+   end
   puts "*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*"
-
   end
- 
+
+  def delete(task)
+    task = @tasks.find(@id)
+    if task
+      puts "【削除】#{task}"
+    else
+      puts "【!】該当idのタスクはありません"
+    end
+  end
 end
 
 task1 = Task.new(title: "洗濯", content: "7時半までに干し終える")
@@ -40,9 +49,9 @@ todo = ToDo.new
 todo.add(task1)
 todo.add(task2)
 todo.info
-# todo.delete(id: 1)
-# todo.add(task3)
-# todo.delete(id: 4)
-# todo.info
+todo.delete(id: 1)
+todo.add(task3)
+todo.delete(id: 4)
+todo.info
 
 
