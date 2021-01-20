@@ -31,12 +31,13 @@ class ToDo
   puts "*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*"
   end
 
-  def delete(task)
-    task = @tasks.find(@id)
-    if task
-      puts "【削除】#{task}"
+  def delete(id)
+    task = @tasks.find{id}
+    if task.nil?
+      puts "【！】 該当idのタスクはありません。"
     else
-      puts "【!】該当idのタスクはありません"
+      @tasks.delete(@id)
+      puts "【削除】#{task.info}"
     end
   end
 end
