@@ -1,50 +1,5 @@
-class Task
-  attr_reader :id, :title, :content
-  attr_writer :id, :title, :content
-  @@count = 0
-  def initialize(title:, content:)
-    @id = @@count += 1
-    @title = title
-    @content = content
-  end
-
-   def info
-     "[No.#{@id}] #{@title}:#{@content}"
-  end
-
-end
-
-class ToDo
-  def initialize
-    @tasks = []
-  end
-  def add(task)
-    @tasks << task
-    puts "【追加】#{task.info}"
-  end
-
-  def info
-    if @tasks.empty?
-      puts "【！】タスクはありません"
-    else
-      puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
-      @tasks.each do |task|
-        puts task.info
-        puts "*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*"
-      end
-    end
-  end
-
-  def delete(id:)
-    task = @tasks.find{ |task| task.id == id }
-    if task.nil?
-      puts "【！】 該当idのタスクはありません。"
-    else
-      @tasks.delete(task)
-      puts "【削除】#{task.info}"
-    end
-  end
-end
+require "./task.rb"
+require "./todo.rb"
 
 task1 = Task.new(title: "洗濯", content: "7時半までに干し終える")
 task2 = Task.new(title: "仕事", content: "9時〜18時")
