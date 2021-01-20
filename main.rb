@@ -24,19 +24,23 @@ class ToDo
   end
 
   def info
-  puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
-   @tasks.each do |task|
-    puts task.info
-   end
-  puts "*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*"
+    puts "*=*=*=*=*=*=*=*=* task *=*=*=*=*=*=*=*=*"
+      @tasks.each do |task|
+        if task.info.empty?
+          puts "【！】タスクはありません"
+        else
+          puts task.info
+        end
+      end
+    puts "*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*"
   end
 
-  def delete(id)
-    task = @tasks.find{id}
+  def delete(id:)
+    task = @tasks.find{ |task| task.id == id }
     if task.nil?
       puts "【！】 該当idのタスクはありません。"
     else
-      @tasks.delete(@id)
+      @tasks.delete(task)
       puts "【削除】#{task.info}"
     end
   end
@@ -53,6 +57,7 @@ todo.info
 todo.delete(id: 1)
 todo.add(task3)
 todo.delete(id: 4)
+todo.delete(id: 3)
 todo.info
 
 
