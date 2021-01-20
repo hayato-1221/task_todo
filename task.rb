@@ -1,6 +1,5 @@
 class Task
-  attr_reader :id, :title, :content
-  attr_writer :id, :title, :content
+  attr_reader :id
   @@count = 0
 
   def initialize(title:, content:)
